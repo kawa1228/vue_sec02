@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8">
+  <title>サンプル</title>
+  <link rel="stylesheet" href="./app.css">
+</head>
+
+<body>
+  <h1>sample</h1>
+  <!-- cloakするとコンパイル前のテンプレート非表示にできる -->
+  <div id="app" v-cloak>
+    <input v-model="message">
+    <p>{{ message }}</p>
+    <!-- チェックボックス -->
+    <label><input type="checkbox" v-model="val" value="A">A</label>
+    <label><input type="checkbox" v-model="val" value="B">B</label>
+    <label><input type="checkbox" v-model="val" value="C">C</label>
+    <p>{{ val }}</p>
+    <!-- ラジオボタン -->
+    <label><input type="radio" v-model="rBtn" value="A">A</label>
+    <label><input type="radio" v-model="rBtn" value="B">B</label>
+    <label><input type="radio" v-model="rBtn" value="C">C</label>
+    <p>{{ rBtn }}</p>
+    <!-- セレクトボックス -->
+    <select v-model="select">
+      <option disabled="disabled">選択してください</option>
+      <option value="a">A</option>
+      <option value="b">B</option>
+      <option value="c">C</option>
+    </select>
+    <p>{{ select }}</p>
+    <!-- 画像 -->
+    <p>画像を選択してください</p>
+    <input type="file" v-on:change="handleChange">
+    <div v-if="preview"><img v-bind:src="preview" width="300" height="200"></div>
+  </div>
+  <!-- スクロール -->
+  <div id="scroll">
+    <header v-bind:class="{ compact: scrollY > 200 }">
+      200pxより下にスクロールしたら .compactを付与
+    </header>
+    <div class="content">...</div>
+    <div v-on:click="scrollTop">
+      △ここをクリックしたら上部へ移動
+    </div>
+  </div>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/cferdinandi/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
+  <script src="index.js"></script>
+</body>
+
+</html>
